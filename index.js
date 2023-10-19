@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express();
 const bodyParser = require("body-parser")
-
+const connection = require("./src/database/database")
+const Games = require("./src/model/games/Games")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
