@@ -6,32 +6,13 @@ const Games = require("./src/model/games/Games")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
-let DB = {
-  games: [
-    {
-      id: 23,
-      title: "Call of duty MW",
-      year: 2019,
-      price: 60
-    },
-    {
-      id: 66,
-      title: "Fifa",
-      year: 2018,
-      price: 40
-    },
-    {
-      id: 22,
-      title: "Call",
-      year: 2012,
-      price: 20
-    }
-  ]
-}
 
 app.get('/games', (req, res) => {
-  res.statusCode = 200
-  res.json(DB.games);
+  Games.findAll({
+  }).then(game => {
+    res.json({ games: game });
+    res.statusCode = 200
+  })
 });
 
 app.get("/games/:id", (req, res) => {
@@ -39,14 +20,11 @@ app.get("/games/:id", (req, res) => {
   if (isNaN(id)) {
     res.sendStatus(400)
   } else {
-    let idGame = parseInt(id);
-    let game = DB.games.find(g => g.id == idGame)
-    if (game !== undefined) {
-      res.statusCode = 200
-      res.json(game)
-    } else {
-      res.sendStatus(404)
-    }
+    Games.findAll().then(game => {
+    res.json({ games: game });
+      res.sendStatus(200);
+    })
+
   }
 })
 
@@ -54,13 +32,13 @@ app.post("/game", (req, res) => {
   //Cadastrando games
   const { title, price, year } = req.body;
   if (title && price && year) {
-    DB.games.push({
-      id: 112,
-      title,
-      price,
-      year
+    Games.create({
+      TITLE: title,
+      PRICE: price,
+      YEAR: year,
+    }).then(() => {
+      res.sendStatus(200);
     })
-    res.sendStatus(200);
   }
 })
 
@@ -71,44 +49,36 @@ app.delete("/game/:id", (req, res) => {
   if (isNaN(id)) {
     res.sendStatus(400)
   } else {
-    let idGames = parseInt(id);
-    let index = DB.games.findIndex(g => g.id === idGames)
-
-    if (index == -1) {
-      res.sendStatus(404)
-    } else {
-      DB.games.splice(index, 1);
-      res.sendStatus(200)
-    }
+    Games.destroy({
+      where: {
+        id: id
+      }
+    }).then(() => {
+      res.sendStatus(200);
+    })
   }
 })
 
 app.put("/game/:id", (req, res) => {
   //Edição
   const { title, price, year } = req.body;
+  const { id } = req.params;
+  console.log(id)
+
   if (isNaN(id)) {
     res.sendStatus(400)
   } else {
-    let idGame = parseInt(id);
-    let game = DB.games.find(g => g.id == idGame)
-    if (game !== undefined) {
-
-      if(title != undefined){
-        game.title = title
+    console.log(title, price, year)
+    Games.update({ TITLE: title, PRICE: price, YEAR: year }, {
+      where: {
+        id: id
       }
-
-      if(price != undefined){
-        game.price = price
-      }
-
-      if(year != undefined){
-        game.year = year
-      }
-
-      res.statusCode = 200
-    } else {
-      res.sendStatus(404)
-    }
+    }).then(() => {
+      console.log("fi")
+      return res.status(200).send("Jogo atualizado com sucesso.");
+    }).catch(() => {
+      return res.status(400).send("Erro ao atualziar o jogo.");
+    })
   }
 })
 app.listen(45678, () => {

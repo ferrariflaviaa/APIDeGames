@@ -2,15 +2,15 @@ const { DataTypes } = require('sequelize')
 const connection = require("../../database/database")
 
 const Games = connection.define('games', {
-  title: {
+  TITLE: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  year: {
+  YEAR: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  price: {
+  PRICE: {
     type: DataTypes.STRING,
     allowNull: false
   }
