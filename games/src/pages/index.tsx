@@ -1,3 +1,9 @@
+import { Home } from "./home";
+
 export const Pages = () => {
-  return <></>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
