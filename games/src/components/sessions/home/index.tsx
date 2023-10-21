@@ -1,4 +1,4 @@
-import { Cards } from "../../components/Card";
+import { Cards } from "../../Card";
 
 export const Home = () => {
   return (
