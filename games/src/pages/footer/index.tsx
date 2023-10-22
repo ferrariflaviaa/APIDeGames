@@ -1,6 +1,6 @@
 import { AiFillInstagram, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 
-import { listNetworks } from "../../../utils/listNetworks";
+import { listNetworks } from "../../utils/listNetworks";
 import { Container } from "./styles";
 
 export const Footer = () => {
