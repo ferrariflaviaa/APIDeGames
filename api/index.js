@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const app = express();
 const bodyParser = require("body-parser")
 const connection = require("./src/database/database")
@@ -6,6 +7,7 @@ const Games = require("./src/model/games/Games")
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
+app.use(cors())
 
 app.get('/games', (req, res) => {
   Games.findAll({
@@ -21,7 +23,7 @@ app.get("/games/:id", (req, res) => {
     res.sendStatus(400)
   } else {
     Games.findAll().then(game => {
-    res.json({ games: game });
+      res.json({ games: game });
       res.sendStatus(200);
     })
 
@@ -81,6 +83,6 @@ app.put("/game/:id", (req, res) => {
     })
   }
 })
-app.listen(45678, () => {
+app.listen(8080, () => {
   console.log("API RODANDO!!")
 })
