@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { getListGames } from "../../../api/GET/listGames";
+import { getCreateGames } from "../../../api/POST/createGames";
 import { CustomContainer } from "../../../styles/globalStyles";
 import { Games } from "../../../types/Games";
 import { Cards } from "../../Card";

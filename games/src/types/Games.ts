@@ -1,5 +1,5 @@
 export type Games = {
-  id: number;
+  id?: number;
   TITLE: string;
   YEAR: string;
   PRICE: string;
