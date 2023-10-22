@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
 export const CustomContainerCard = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CustomContentCard = styled.div`
   width: 250px;
   height: 300px;
   background: #d9d9d9;

@@ -1,5 +1,4 @@
-import { CustomContainer, CustomContent } from "../../styles/globalStyles";
-import { CustomContainerCard } from "./styles";
+import { CustomContainerCard, CustomContentCard } from "./styles";
 
 interface ICards {
   title: string;
@@ -8,8 +7,8 @@ interface ICards {
 }
 export const Cards = ({ price, title, year }: ICards) => {
   return (
-    <CustomContainer>
-      <CustomContainerCard>
+    <CustomContainerCard>
+      <CustomContentCard>
         <div className="about">
           <h1>{title}</h1>
           <div className="subtTitle">
@@ -17,7 +16,7 @@ export const Cards = ({ price, title, year }: ICards) => {
             <h3>Ano: {year}</h3>
           </div>
         </div>
-      </CustomContainerCard>
-    </CustomContainer>
+      </CustomContentCard>
+    </CustomContainerCard>
   );
 };
