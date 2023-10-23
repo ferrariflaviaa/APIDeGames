@@ -18,11 +18,10 @@ export const Home = () => {
     <CustomContainer>
       <Container>
         {listGames &&
-          listGames.map((item) => {
-            const { PRICE, TITLE, YEAR, id } = item;
+          listGames.map((item, index) => {
             return (
-              <div className="card" key={id}>
-                <Cards key={id} price={PRICE} title={TITLE} year={YEAR} />;
+              <div className="card" key={index}>
+                <Cards key={index} data={item} />;
               </div>
             );
           })}

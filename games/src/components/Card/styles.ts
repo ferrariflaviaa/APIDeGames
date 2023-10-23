@@ -40,6 +40,15 @@ export const CustomContentCard = styled.div`
       font-family: Inter;
       padding-left: 14px;
 
+      .options {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-decoration: none;
+        color: ${({ theme }) => theme.COLORS.WHITE};
+        cursor: pointer;
+      }
+
       h3 {
         padding: 2px 0;
       }
