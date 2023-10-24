@@ -55,7 +55,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .react-modal-content {
-    background: var(--white);
+    background: ${({ theme }) => theme.COLORS.BGCOLOR2};
     padding: 3rem;
     position: relative;
     border-radius: 0.24;

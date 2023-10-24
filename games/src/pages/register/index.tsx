@@ -38,7 +38,7 @@ export const RegisterGame = () => {
         <InputForm
           name="game"
           title="Ano de lançamento:"
-          type="text"
+          type="date"
           sizeInput={35}
           value={year}
           onChange={setYear}

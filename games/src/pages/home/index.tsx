@@ -8,6 +8,8 @@ import { Container } from "./styles";
 
 export const Home = () => {
   const [listGames, setListGames] = useState<Games[]>();
+  // const [update, setUpdate] = useState<boolean>(false);
+
   useEffect(() => {
     getListGames().then((res) => {
       setListGames(res);

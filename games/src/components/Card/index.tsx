@@ -1,6 +1,8 @@
+import { useState, Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Games } from "../../types/Games";
+import { ModalDelete } from "../modalDelete";
 import { CustomContainerCard, CustomContentCard } from "./styles";
 
 interface ICards {
@@ -8,9 +10,14 @@ interface ICards {
 }
 export const Cards = ({ data }: ICards) => {
   const { PRICE, TITLE, YEAR, id } = data;
+  const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
+
   const navigateToEdition = (id: number) => {
     navigate(`/edition/${id}`);
+  };
+  const handleStateModal = () => {
+    setModalOpen(!modalOpen);
   };
   return (
     <CustomContainerCard>
@@ -24,12 +31,18 @@ export const Cards = ({ data }: ICards) => {
               <a onClick={() => navigateToEdition(Number(id))}>
                 <h3>Edição</h3>
               </a>
-              <a href="">
+              <a onClick={() => handleStateModal()}>
                 <h3>Deletar</h3>
               </a>
             </div>
           </div>
         </div>
+        <ModalDelete
+          isOpen={modalOpen}
+          onRequestClose={handleStateModal}
+          id={Number(id)}
+          title={TITLE}
+        />
       </CustomContentCard>
     </CustomContainerCard>
   );
