@@ -3,25 +3,37 @@ import { API_GAMES } from "..";
 import { Games } from "../../types/Games";
 
 interface IUpdateListGames {
+  title: string;
+  year: string;
+  price: string;
   id: number;
 }
 const updateListGames = async ({
   id,
-}: IUpdateListGames): Promise<Games[] | undefined> => {
+  price,
+  title,
+  year,
+}: IUpdateListGames): Promise<boolean> => {
+  const game = {
+    id,
+    price,
+    title,
+    year,
+  };
   return new Promise((resolve) => {
     try {
-      API_GAMES.get(`/games/${id}`)
+      API_GAMES.put(`/gameupdate`, game)
         .then((res) => {
           const listGames: Games[] = res.data.games;
-          resolve(listGames);
-          return listGames;
+          resolve(true);
+          return true;
         })
         .catch((error) => {
-          resolve(undefined);
-          return undefined;
+          resolve(false);
+          return false;
         });
     } catch (erro) {
-      resolve(undefined);
+      resolve(false);
     }
   });
 };

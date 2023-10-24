@@ -14,6 +14,11 @@ export const Container = styled.div<IContainerProps>`
   cursor: pointer;
   background-color: ${({ theme }) => theme.COLORS.BGCOLOR3};
   margin-top: 32px;
+  transition: background-color 0.4s;
+  &:hover {
+    background-color: ${({ theme }) => theme.COLORS.TEXTCOLOR1};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+  }
 
   h1 {
     font-size: 1.1rem;

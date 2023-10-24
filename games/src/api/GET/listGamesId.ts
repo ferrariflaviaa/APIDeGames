@@ -8,12 +8,11 @@ interface IGetListGamesId {
 const getListGamesId = async ({
   id,
 }: IGetListGamesId): Promise<Games | undefined> => {
-  console.log(id);
   return new Promise((resolve) => {
     try {
       API_GAMES.get(`/games/${id}`)
         .then((res) => {
-          const listGames: Games = res.data.games;
+          const listGames: Games = res.data.game;
           resolve(listGames);
           return listGames;
         })

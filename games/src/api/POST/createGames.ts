@@ -3,7 +3,6 @@ import { API_GAMES } from "..";
 import { Games } from "../../types/Games";
 
 interface IPostCreateGames {
-  // data: Games;
   title: string;
   year: string;
   price: string;

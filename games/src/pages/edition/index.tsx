@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -35,7 +36,7 @@ export const Edition = () => {
   return (
     <CustomContainer>
       <NewClientForm>
-        <CustonHeaderPage title="Cadastro de jogos" />
+        <CustonHeaderPage title="Edição de jogo" />
         <InputForm
           name="game"
           title="Nome do game"
@@ -67,14 +68,13 @@ export const Edition = () => {
           isPrimary="blue"
           title="Atualizar"
           onClink={() =>
-            postCreateGames({ price, title, year }).then((res) => {
-              if (res) {
-                toast.success("ATUALIZAÇÃO REALIZADA!");
-                setPrice("");
-                setTitle("");
-                setYear("");
-              }
-            })
+            updateListGames({ price, title, year, id: Number(id) }).then(
+              (res) => {
+                if (res) {
+                  return toast.success("ATUALIZAÇÃO REALIZADA!");
+                }
+              },
+            )
           }
           space={false}
         />

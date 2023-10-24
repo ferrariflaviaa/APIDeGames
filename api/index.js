@@ -18,17 +18,25 @@ app.get('/games', (req, res) => {
 });
 
 app.get("/games/:id", (req, res) => {
-  const { id } = req.params
+  const { id } = req.params;
   if (isNaN(id)) {
-    res.sendStatus(400)
+    res.sendStatus(400);
   } else {
-    Games.findAll().then(game => {
-      res.json({ games: game });
-      res.sendStatus(200);
+    Games.findByPk(id) // Supondo que você esteja usando Sequelize para interagir com o banco de dados.
+    .then(game => {
+      if (game) {
+        res.json({ game });
+      } else {
+        res.sendStatus(404); // Retorna um status 404 (Not Found) se o jogo não for encontrado.
+      }
     })
-
+    .catch(error => {
+      console.error("Erro ao buscar o jogo:", error);
+      res.sendStatus(500); // Retorna um status 500 (Internal Server Error) em caso de erro.
+    });
   }
-})
+});
+
 
 app.post("/game", (req, res) => {
   //Cadastrando games
@@ -61,23 +69,19 @@ app.delete("/game/:id", (req, res) => {
   }
 })
 
-app.put("/game/:id", (req, res) => {
+app.put("/gameupdate/", (req, res) => {
   //Edição
-  const { title, price, year } = req.body;
-  const { id } = req.params;
-  console.log(id)
+  const { title, price, year, id } = req.body;
 
   if (isNaN(id)) {
     res.sendStatus(400)
   } else {
-    console.log(title, price, year)
     Games.update({ TITLE: title, PRICE: price, YEAR: year }, {
       where: {
         id: id
       }
     }).then(() => {
-      console.log("fi")
-      return res.status(200).send("Jogo atualizado com sucesso.");
+      return  res.sendStatus(200);
     }).catch(() => {
       return res.status(400).send("Erro ao atualziar o jogo.");
     })

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import { postCreateGames } from "../../api/POST/createGames";
 import { Button } from "../../components/Button";
@@ -49,6 +50,7 @@ export const RegisterGame = () => {
           onClink={() =>
             postCreateGames({ price, title, year }).then((res) => {
               if (res) {
+                toast.success("CADASTRO REALIZADA!");
                 setPrice("");
                 setTitle("");
                 setYear("");
