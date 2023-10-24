@@ -6,6 +6,7 @@ import { Button } from "../../components/Button";
 import { CustonHeaderPage } from "../../components/CustonHeaderPage";
 import { InputForm } from "../../components/InputForm";
 import { CustomContainer } from "../../styles/globalStyles";
+import { formatMonetary } from "../../utils/formartMonetary";
 import { NewClientForm } from "./styled";
 
 export const RegisterGame = () => {
@@ -31,7 +32,7 @@ export const RegisterGame = () => {
           title="Valor do jogo"
           type="text"
           sizeInput={35}
-          value={price}
+          value={formatMonetary(price)}
           onChange={setPrice}
           disabled={false}
         />

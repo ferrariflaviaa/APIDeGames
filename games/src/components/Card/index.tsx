@@ -1,14 +1,19 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { teste } from "../../pages/home/services";
 import { Games } from "../../types/Games";
+import { formatMonetary } from "../../utils/formartMonetary";
+import { formatDate } from "../../utils/formatDate";
 import { ModalDelete } from "../modalDelete";
 import { CustomContainerCard, CustomContentCard } from "./styles";
 
 interface ICards {
   data: Games;
+  update: boolean;
+  setUpdate: Dispatch<SetStateAction<boolean>>;
 }
-export const Cards = ({ data }: ICards) => {
+export const Cards = ({ data, setUpdate, update }: ICards) => {
   const { PRICE, TITLE, YEAR, id } = data;
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -17,6 +22,7 @@ export const Cards = ({ data }: ICards) => {
     navigate(`/edition/${id}`);
   };
   const handleStateModal = () => {
+    teste({ setUpdate, update });
     setModalOpen(!modalOpen);
   };
   return (
@@ -25,8 +31,8 @@ export const Cards = ({ data }: ICards) => {
         <div className="about">
           <h1>{TITLE}</h1>
           <div className="subtTitle">
-            <h3>Preço: {PRICE}</h3>
-            <h3>Ano: {YEAR}</h3>
+            <h3>Preço: {formatMonetary(PRICE)}</h3>
+            <h3>Ano: {formatDate(YEAR)}</h3>
             <div className="options">
               <a onClick={() => navigateToEdition(Number(id))}>
                 <h3>Edição</h3>

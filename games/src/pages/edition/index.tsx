@@ -11,6 +11,7 @@ import { CustonHeaderPage } from "../../components/CustonHeaderPage";
 import { InputForm } from "../../components/InputForm";
 import { CustomContainer } from "../../styles/globalStyles";
 import { Games } from "../../types/Games";
+import { formatMonetary } from "../../utils/formartMonetary";
 import { NewClientForm } from "./styled";
 
 export const Edition = () => {
@@ -51,7 +52,7 @@ export const Edition = () => {
           title="Valor do jogo"
           type="text"
           sizeInput={35}
-          value={price}
+          value={formatMonetary(price)}
           onChange={setPrice}
           disabled={false}
         />

@@ -8,13 +8,13 @@ import { Container } from "./styles";
 
 export const Home = () => {
   const [listGames, setListGames] = useState<Games[]>();
-  // const [update, setUpdate] = useState<boolean>(false);
+  const [update, setUpdate] = useState<boolean>(false);
 
   useEffect(() => {
     getListGames().then((res) => {
       setListGames(res);
     });
-  }, []);
+  }, [update]);
 
   return (
     <CustomContainer>
@@ -23,7 +23,13 @@ export const Home = () => {
           listGames.map((item, index) => {
             return (
               <div className="card" key={index}>
-                <Cards key={index} data={item} />;
+                <Cards
+                  key={index}
+                  data={item}
+                  setUpdate={setUpdate}
+                  update={update}
+                />
+                ;
               </div>
             );
           })}

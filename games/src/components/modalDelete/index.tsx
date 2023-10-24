@@ -27,7 +27,7 @@ export const ModalDelete = ({
     >
       <Container>
         <form>
-          <h1>Deseja excluír o jogo ${title}?</h1>
+          <h1>Deseja excluír o jogo {title}?</h1>
           <div className="rowButton">
             <Button
               isPrimary="blue"
