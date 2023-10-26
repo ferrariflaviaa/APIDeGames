@@ -4,12 +4,16 @@ const app = express();
 const bodyParser = require("body-parser")
 const connection = require("./src/database/database")
 const Games = require("./src/model/games/Games")
+const Users = require("./src/model/users/Users")
+const userController = require("./src/controller/users/userController");
+const adminAuth = require("./src/middlware/adminAuth");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 app.use(cors())
+app.use("/games", userController)
 
-app.get('/games', (req, res) => {
+app.get('/games', adminAuth,(req, res) => {
   Games.findAll({
   }).then(game => {
     res.json({ games: game });
