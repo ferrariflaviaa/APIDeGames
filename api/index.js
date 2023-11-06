@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use("/games", userController)
 
-app.get('/games', adminAuth,(req, res) => {
+app.get('/games', (req, res) => {
   Games.findAll({
   }).then(game => {
     res.json({ games: game });
@@ -42,7 +42,7 @@ app.get("/games/:id", (req, res) => {
 });
 
 
-app.post("/game", (req, res) => {
+app.post("/game", adminAuth,(req, res) => {
   //Cadastrando games
   const { title, price, year } = req.body;
   if (title && price && year) {
@@ -56,7 +56,7 @@ app.post("/game", (req, res) => {
   }
 })
 
-app.delete("/game/:id", (req, res) => {
+app.delete("/game/:id", adminAuth,(req, res) => {
   //Deletação
   const { id } = req.params;
 
@@ -73,7 +73,7 @@ app.delete("/game/:id", (req, res) => {
   }
 })
 
-app.put("/gameupdate/", (req, res) => {
+app.put("/gameupdate/", adminAuth,(req, res) => {
   //Edição
   const { title, price, year, id } = req.body;
 
