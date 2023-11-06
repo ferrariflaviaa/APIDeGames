@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Button } from "../../components/Button";
 import { CustonHeaderPage } from "../../components/CustonHeaderPage";
 import { InputForm } from "../../components/InputForm";
+import { useUserLoginContext } from "../../context/userContext";
 import { CustomContainer } from "../../styles/globalStyles";
 import { validLogin } from "./services";
 import { NewClientForm } from "./styled";
@@ -13,6 +14,7 @@ import { NewClientForm } from "./styled";
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { setUser } = useUserLoginContext();
 
   return (
     <CustomContainer>
@@ -40,7 +42,7 @@ export const Login = () => {
         <Button
           isPrimary="blue"
           title="Login"
-          onClink={() => validLogin({ email, password })}
+          onClink={() => validLogin({ email, password, setUser })}
           space={false}
         />
       </NewClientForm>

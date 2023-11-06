@@ -1,16 +1,21 @@
+import { Dispatch, SetStateAction } from "react";
 import { toast } from "react-toastify";
 
 import { postAuth } from "../../api/POST/postAuth";
+import { User } from "../../types/User";
 
 interface IValidLogin {
   email: string;
   password: string;
+  setUser: Dispatch<SetStateAction<User>>;
 }
-const validLogin = ({ email, password }: IValidLogin) => {
+const validLogin = ({ email, password, setUser }: IValidLogin) => {
   if (email !== "" && password !== "") {
     postAuth({ email, password }).then((res) => {
       if (res) {
         toast.success("LOGIN COM SUCESSO");
+        localStorage.setItem("loged_user", JSON.stringify(res));
+        setUser(res);
       }
     });
   } else {

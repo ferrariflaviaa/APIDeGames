@@ -21,7 +21,7 @@ app.get('/games', (req, res) => {
   })
 });
 
-app.get("/games/:id", (req, res) => {
+app.get("/games/:id", adminAuth,(req, res) => {
   const { id } = req.params;
   if (isNaN(id)) {
     res.sendStatus(400);
