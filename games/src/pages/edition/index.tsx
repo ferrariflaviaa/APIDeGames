@@ -4,19 +4,18 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { getListGamesId } from "../../api/GET/listGamesId";
-import { postCreateGames } from "../../api/POST/createGames";
 import { updateListGames } from "../../api/PUT/updateListGames";
 import { Button } from "../../components/Button";
 import { CustonHeaderPage } from "../../components/CustonHeaderPage";
 import { InputForm } from "../../components/InputForm";
 import { CustomContainer } from "../../styles/globalStyles";
-import { Games } from "../../types/Games";
+// import { Games } from "../../types/Games";
 import { formatMonetary } from "../../utils/formartMonetary";
 import { NewClientForm } from "./styled";
 
 export const Edition = () => {
   const { id } = useParams();
-  const [data, setData] = useState<Games>();
+  // const [data, setData] = useState<Games>();
   const [title, setTitle] = useState<string>("");
   const [year, setYear] = useState<string>("");
   const [price, setPrice] = useState<string>("");

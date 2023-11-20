@@ -1,7 +1,9 @@
 /* eslint-disable consistent-return */
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { toast } from "react-toastify";
+
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { CustonHeaderPage } from "../../components/CustonHeaderPage";
@@ -15,6 +17,7 @@ export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { setUser } = useUserLoginContext();
+  const navigate = useNavigate();
 
   return (
     <CustomContainer>
@@ -42,7 +45,7 @@ export const Login = () => {
         <Button
           isPrimary="blue"
           title="Login"
-          onClink={() => validLogin({ email, password, setUser })}
+          onClink={() => validLogin({ email, password, setUser, navigate })}
           space={false}
         />
       </NewClientForm>

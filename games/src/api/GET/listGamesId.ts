@@ -16,7 +16,7 @@ const getListGamesId = async ({
           resolve(listGames);
           return listGames;
         })
-        .catch((error) => {
+        .catch(() => {
           resolve(undefined);
           return undefined;
         });

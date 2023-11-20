@@ -29,7 +29,6 @@ export const Home = () => {
                   setUpdate={setUpdate}
                   update={update}
                 />
-                ;
               </div>
             );
           })}

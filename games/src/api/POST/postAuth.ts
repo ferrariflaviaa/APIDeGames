@@ -1,8 +1,8 @@
+import axios from "axios";
 import { toast } from "react-toastify";
 
 import { API_GAMES } from "..";
 
-import { useUserLoginContext } from "../../context/userContext";
 import { User } from "../../types/User";
 
 interface IAuth {
@@ -20,10 +20,11 @@ const postAuth = async ({
       API_GAMES.post("/games/auth", data)
         .then((res) => {
           const user: User = res.data;
+          axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
           resolve(user);
           return user;
         })
-        .catch((_) => {
+        .catch(() => {
           toast.warning("EMAIL OU SENHA INCORRETOS");
           resolve(undefined);
           return undefined;

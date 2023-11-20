@@ -1,7 +1,5 @@
 import { API_GAMES } from "..";
 
-import { Games } from "../../types/Games";
-
 interface IPostCreateGames {
   title: string;
   year: string;
@@ -20,11 +18,11 @@ const postCreateGames = async ({
   return new Promise((resolve) => {
     try {
       API_GAMES.post(`/game`, game)
-        .then((res) => {
+        .then(() => {
           resolve(true);
           return true;
         })
-        .catch((error) => {
+        .catch(() => {
           resolve(false);
           return false;
         });

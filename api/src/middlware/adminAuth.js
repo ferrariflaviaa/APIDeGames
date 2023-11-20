@@ -3,7 +3,7 @@ const JWTSecret = 'mdokremokmeokmdkemdkoemdko';
 
 function adminAuth(req, res, next){
  const authToken = req.headers['authorization']
- if(adminAuth != undefined){
+ if(authToken != undefined){
   const bearer = authToken.split(' ');
   let token = bearer[1];
   jwt.verify(token, JWTSecret,(err, data)=> {
@@ -19,5 +19,7 @@ function adminAuth(req, res, next){
 
  }
 }
+
+
 
 module.exports = adminAuth

@@ -1,6 +1,6 @@
-import { API_GAMES } from "..";
+import axios, { AxiosHeaders } from "axios";
 
-import { Games } from "../../types/Games";
+import { API_GAMES } from "..";
 
 interface IDeleteGame {
   id: number;
@@ -14,6 +14,7 @@ const deleteGame = async ({ id }: IDeleteGame): Promise<boolean> => {
           return true;
         })
         .catch((error) => {
+          console.log("error ", error);
           resolve(false);
           return false;
         });

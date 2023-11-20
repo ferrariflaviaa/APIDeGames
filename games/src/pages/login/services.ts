@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { NavigateFunction } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { postAuth } from "../../api/POST/postAuth";
@@ -8,14 +9,16 @@ interface IValidLogin {
   email: string;
   password: string;
   setUser: Dispatch<SetStateAction<User>>;
+  navigate: NavigateFunction;
 }
-const validLogin = ({ email, password, setUser }: IValidLogin) => {
+const validLogin = ({ email, password, setUser, navigate }: IValidLogin) => {
   if (email !== "" && password !== "") {
     postAuth({ email, password }).then((res) => {
       if (res) {
         toast.success("LOGIN COM SUCESSO");
         localStorage.setItem("loged_user", JSON.stringify(res));
         setUser(res);
+        navigate("/");
       }
     });
   } else {

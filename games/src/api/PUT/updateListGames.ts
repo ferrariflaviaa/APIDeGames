@@ -1,6 +1,6 @@
 import { API_GAMES } from "..";
 
-import { Games } from "../../types/Games";
+// import { Games } from "../../types/Games";
 
 interface IUpdateListGames {
   title: string;
@@ -23,12 +23,12 @@ const updateListGames = async ({
   return new Promise((resolve) => {
     try {
       API_GAMES.put(`/gameupdate`, game)
-        .then((res) => {
-          const listGames: Games[] = res.data.games;
+        .then(() => {
+          // const listGames: Games[] = res.data.games;
           resolve(true);
           return true;
         })
-        .catch((error) => {
+        .catch(() => {
           resolve(false);
           return false;
         });
