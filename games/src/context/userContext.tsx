@@ -25,12 +25,11 @@ const UserProvider = ({ children }: IContextProps) => {
   const [user, setUser] = useState<User>({});
 
   useEffect(() => {
-    const searchedUserAdmin = localStorage.getItem("loged_user");
-
-    if (searchedUserAdmin) {
-      const myUser: User = JSON.parse(searchedUserAdmin);
-      setUser(myUser);
-    }
+    // const searchedUserAdmin = localStorage.getItem("loged_user");
+    // if (searchedUserAdmin) {
+    //   const myUser: User = JSON.parse(searchedUserAdmin);
+    //   setUser(myUser);
+    // }
   }, []);
 
   return (

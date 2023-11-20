@@ -20,7 +20,6 @@ const postAuth = async ({
       API_GAMES.post("/games/auth", data)
         .then((res) => {
           const user: User = res.data;
-          axios.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
           resolve(user);
           return user;
         })

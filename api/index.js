@@ -21,7 +21,7 @@ app.get('/games', (req, res) => {
   })
 });
 
-app.get("/games/:id", adminAuth,(req, res) => {
+app.get("/games/:id",(req, res) => {
   const { id } = req.params;
   if (isNaN(id)) {
     res.sendStatus(400);
@@ -42,7 +42,7 @@ app.get("/games/:id", adminAuth,(req, res) => {
 });
 
 
-app.post("/game", adminAuth,(req, res) => {
+app.post("/game",(req, res) => {
   //Cadastrando games
   const { title, price, year } = req.body;
   if (title && price && year) {
@@ -56,7 +56,7 @@ app.post("/game", adminAuth,(req, res) => {
   }
 })
 
-app.delete("/game/:id", adminAuth,(req, res) => {
+app.delete("/game/:id",(req, res) => {
   //Deletação
   const { id } = req.params;
 
@@ -73,7 +73,7 @@ app.delete("/game/:id", adminAuth,(req, res) => {
   }
 })
 
-app.put("/gameupdate/", adminAuth,(req, res) => {
+app.put("/gameupdate/",(req, res) => {
   //Edição
   const { title, price, year, id } = req.body;
 

@@ -6,7 +6,7 @@ const Routes = () => {
   const { user } = useUserLoginContext();
   console.log(user.email);
 
-  return user.token ? <AuthRoutes /> : <AppRoutes />;
+  return user.token === undefined ? <AuthRoutes /> : <AppRoutes />;
 };
 
 export { Routes };

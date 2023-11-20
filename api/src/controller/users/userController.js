@@ -18,7 +18,6 @@ router.post('/auth', (req, res) => {
               res.status(400).json({ err: "Falha na geração do token" });
             } else {
               res.status(200).json({ token: token,  id: user.id, email: user.email});
-              localStorage.setItem('token', token);
             }
           });
         } else {
