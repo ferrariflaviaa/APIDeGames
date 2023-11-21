@@ -13,6 +13,7 @@ export const RegisterGame = () => {
   const [title, setTitle] = useState<string>("");
   const [year, setYear] = useState<string>("");
   const [price, setPrice] = useState<string>("");
+  const [image, setImage] = useState<string>("");
 
   return (
     <CustomContainer>
@@ -45,18 +46,29 @@ export const RegisterGame = () => {
           onChange={setYear}
           disabled={false}
         />
+        <InputForm
+          name="game"
+          title="Link da imagem"
+          type="text"
+          sizeInput={35}
+          value={image}
+          onChange={setImage}
+          disabled={false}
+        />
         <Button
           isPrimary="blue"
           title="Cadastrar"
           onClink={() =>
-            postCreateGames({ price, title, year }).then((res) => {
-              if (res) {
-                toast.success("CADASTRO REALIZADA!");
-                setPrice("");
-                setTitle("");
-                setYear("");
-              }
-            })
+            postCreateGames({ price, title, year, linkImage: image }).then(
+              (res) => {
+                if (res) {
+                  toast.success("CADASTRO REALIZADA!");
+                  setPrice("");
+                  setTitle("");
+                  setYear("");
+                }
+              },
+            )
           }
           space={false}
         />

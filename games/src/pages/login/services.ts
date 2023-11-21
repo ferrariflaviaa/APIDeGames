@@ -16,7 +16,7 @@ const validLogin = ({ email, password, setUser, navigate }: IValidLogin) => {
     postAuth({ email, password }).then((res) => {
       if (res) {
         toast.success("LOGIN COM SUCESSO");
-        // localStorage.setItem("loged_user", JSON.stringify(res));
+        localStorage.setItem("loged_user", JSON.stringify(res));
         setUser(res);
         navigate("/");
       }

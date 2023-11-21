@@ -44,12 +44,13 @@ app.get("/games/:id",(req, res) => {
 
 app.post("/game",(req, res) => {
   //Cadastrando games
-  const { title, price, year } = req.body;
+  const { title, price, year, linkImage } = req.body;
   if (title && price && year) {
     Games.create({
       TITLE: title,
       PRICE: price,
       YEAR: year,
+      linkImage: linkImage
     }).then(() => {
       res.sendStatus(200);
     })

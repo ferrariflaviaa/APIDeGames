@@ -13,6 +13,10 @@ const Games = connection.define('games', {
   PRICE: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  linkImage: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 })
 

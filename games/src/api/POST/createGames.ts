@@ -4,16 +4,19 @@ interface IPostCreateGames {
   title: string;
   year: string;
   price: string;
+  linkImage: string;
 }
 const postCreateGames = async ({
   price,
   title,
   year,
+  linkImage,
 }: IPostCreateGames): Promise<boolean> => {
   const game = {
     price,
     title,
     year,
+    linkImage,
   };
   return new Promise((resolve) => {
     try {
