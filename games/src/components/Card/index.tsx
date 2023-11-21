@@ -6,7 +6,7 @@ import { teste } from "../../pages/home/services";
 import { Games } from "../../types/Games";
 import { formatMonetary } from "../../utils/formartMonetary";
 import { formatDate } from "../../utils/formatDate";
-import { ModalDelete } from "../modalDelete";
+import { ModalDelete } from "../modal/modalDelete";
 import { CustomContainerCard, CustomContentCard } from "./styles";
 
 interface ICards {

@@ -1,22 +1,16 @@
 import Modal from "react-modal";
-import { toast } from "react-toastify";
 
-import { deleteGame } from "../../api/DELETE/deleteGame";
-import { Button } from "../Button";
+import { useUserLoginContext } from "../../../context/userContext";
+import { Button } from "../../Button";
 import { Container } from "./styled";
 
 interface IModaDeleteProp {
   isOpen: boolean;
   onRequestClose: () => void;
-  id: number;
-  title: string;
 }
-export const ModalDelete = ({
-  isOpen,
-  onRequestClose,
-  id,
-  title,
-}: IModaDeleteProp) => {
+export const ModalSair = ({ isOpen, onRequestClose }: IModaDeleteProp) => {
+  const { logout } = useUserLoginContext();
+
   return (
     <Modal
       isOpen={isOpen}
@@ -27,20 +21,13 @@ export const ModalDelete = ({
     >
       <Container>
         <form>
-          <h1>Deseja excluír o jogo {title}?</h1>
+          <h1>Deseja sair?</h1>
           <div className="rowButton">
             <Button
               isPrimary="blue"
               title="Sim"
               space={true}
-              onClink={() =>
-                deleteGame({ id }).then((res) => {
-                  if (res) {
-                    onRequestClose();
-                    toast.success("Deletado com sucesso");
-                  }
-                })
-              }
+              onClink={() => logout()}
             />
             <Button
               isPrimary="blue"

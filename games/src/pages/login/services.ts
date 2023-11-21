@@ -14,7 +14,6 @@ interface IValidLogin {
 const validLogin = ({ email, password, setUser, navigate }: IValidLogin) => {
   if (email !== "" && password !== "") {
     postAuth({ email, password }).then((res) => {
-      console.log("res ", res);
       if (res) {
         toast.success("LOGIN COM SUCESSO");
         // localStorage.setItem("loged_user", JSON.stringify(res));
