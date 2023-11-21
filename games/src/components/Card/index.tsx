@@ -35,7 +35,7 @@ export const Cards = ({ data, setUpdate, update }: ICards) => {
           <div className="subtTitle">
             <h3>Preço: {formatMonetary(PRICE)}</h3>
             <h3>Ano: {formatDate(YEAR)}</h3>
-            {user && (
+            {user.token && (
               <div className="options">
                 <a onClick={() => navigateToEdition(Number(id))}>
                   <h3>Edição</h3>
